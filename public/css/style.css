@@ -1,0 +1,77 @@
+.poster {
+  width: 100px;
+}
+
+.table > tbody > tr > * {
+  vertical-align: middle;
+}
+
+/* Navbar container */
+.navbar {
+  background-color: #001f3f !important; /* Navy */
+  padding: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar brand */
+.navbar-brand {
+  color: #ffffff !important;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.navbar-brand:hover {
+  color: #cccccc !important;
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #ffeb3b !important; /* Kuning saat hover */
+}
+
+/* Dropdown menu */
+.navbar-nav .dropdown-menu {
+  background-color: #ffffff !important;
+  border: none;
+  border-radius: 8px;
+}
+
+.navbar-nav .dropdown-item {
+  color: #001f3f !important;
+  font-weight: 500;
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #f1f1f1 !important;
+  color: #001f3f;
+}
+
+/* Search form */
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+.btn-outline-success {
+  border-radius: 5px;
+  border-color: #ffffff !important;
+  color: #ffffff;
+}
+
+.btn-outline-success:hover {
+  background-color: #ffeb3b !important;
+  color: #001f3f;
+  border-color: #ffeb3b;
+}
+
+.btn-primary {
+  background-color: rgb(2, 63, 123);
+  border-color: rgb(2, 63, 123);
+}
