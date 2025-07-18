@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class KDramaModel extends Model
 {
     protected $table = 'kdrama';
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $allowedFields = ['judul', 'slug', 'sutradara', 'penayangan', 'poster'];
 
     public function getKDrama($slug = false)

@@ -16,8 +16,13 @@
                                 <h5 class="card-title"><?= $kdrama['judul']; ?></h5>
                                 <p class="card-text">Sutradara : <?= $kdrama['sutradara']; ?></p>
                                 <p class="card-text"><small class="text-muted">Penayangan : <?= $kdrama['penayangan']; ?></small></p>
-                                <a href="" class="btn btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="/kdrama/edit/<?= $kdrama['slug']; ?>" class="btn btn-warning">Edit</a>
+
+                                <form action="/kdrama/<?= $kdrama['id']; ?>" method="post" class="d-inline">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?');">Delete</button>
+                                </form>
+
                                 <br>
                                 <br>
                                 <a href="/kdrama">Kembali ke daftar K-Drama</a>
