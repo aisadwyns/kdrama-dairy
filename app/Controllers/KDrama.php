@@ -76,10 +76,36 @@ class KDrama extends BaseController
                     'required' => '{field} kdrama harus di isi',
                     'is_unique' => '{field} kdrama sudah ada'
                 ]
+            ],
+            'sutradara' => 'required',
+            'penayangan' => 'required',
+
+            'poster' => [
+                'rules' => 'max_size[poster,1024]|is_image[poster]|mime_in[poster,image/jpg,image/jpeg,image/png,image/svg]',
+                'errors' => [
+                    'max_size' => 'ukuran gambar terlalu besar',
+                    'is_image' => 'yang dipilih bukan gambar',
+                    'mime_in' => 'yang dipilih bukan gambar',
+                ]
             ]
+
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/kdrama/create')->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('/kdrama/create')->withInput()->with('validation', $validation);
+            return redirect()->to('/kdrama/create')->withInput();
+        }
+
+        //ambil gambar
+        $filePoster = $this->request->getFile('poster');
+        if ($filePoster->getError() == 4) {
+            $namaPoster = 'default.jpg';
+        } else {
+            //generate nama poster random
+            $namaPoster = $filePoster->getRandomName();
+            //pindahkan file ke folder img
+            $filePoster->move('img', $namaPoster);
+            //ambil nama file poster
+            $filePoster = $filePoster->getName();
         }
 
         $slug = url_title($this->request->getVar('judul'), '-', true);
@@ -88,7 +114,7 @@ class KDrama extends BaseController
             'slug' => $slug,
             'sutradara' => $this->request->getVar('sutradara'),
             'penayangan' => $this->request->getVar('penayangan'),
-            'poster' => $this->request->getVar('poster'),
+            'poster' => $namaPoster,
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
@@ -98,7 +124,17 @@ class KDrama extends BaseController
 
     public function delete($id)
     {
+
+        //menghapus gambar
+        $kdrama = $this->kdramaModel->find($id);
+
+        //cek jika file gambarnya default.jpg
+        if ($kdrama['poster'] != 'default.jpg') {
+            unlink('img/' . $kdrama['poster']);
+        }
+
         $this->kdramaModel->delete($id);
+        /**sebenarnya fungsi ini itu buat menghapus data didalam model, model itu kan datanya dari tabel, jadi file kayak gambar poster itu ngga ikut kehapus, makanya butuh code lagi, yang nyari filenya berdasarkan id, jdi sy tulis diatas*/
 
         session()->setFlashdata('pesan', 'Data berhasil dihapus.');
         return redirect()->to('/kdrama');
@@ -134,10 +170,39 @@ class KDrama extends BaseController
                     'required' => '{field} kdrama harus di isi',
                     'is_unique' => '{field} kdrama sudah ada'
                 ]
+            ],
+            'sutradara' => 'required',
+            'penayangan' => 'required',
+
+            'poster' => [
+                'rules' => 'max_size[poster,1024]|is_image[poster]|mime_in[poster,image/jpg,image/jpeg,image/png,image/svg]',
+                'errors' => [
+                    'max_size' => 'ukuran gambar terlalu besar',
+                    'is_image' => 'yang dipilih bukan gambar',
+                    'mime_in' => 'yang dipilih bukan gambar',
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('/kdrama/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('/kdrama/edit/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            return redirect()->to('/kdrama/edit/' . $this->request->getVar('slug'))->withInput();
+        }
+
+        $filePoster = $this->request->getFile('poster');
+
+        //cek gambar, apakah tetap gambar lama
+        if ($filePoster->getError() == 4) {
+            $namaPoster = $this->request->getVar('posterLama'); // posterLama diambil dari hidden dalam view edit 
+        } else {
+            //generate nama file random
+            $namaPoster = $filePoster->getRandomName();
+            //pindahkan gambar
+            $filePoster->move('img', $namaPoster);
+            //hapus gambar lama (biar ga menuh menuhin server lah)
+            $posterLama = $this->request->getVar('posterLama');
+            if ($posterLama != 'default.jpg' && file_exists('img/' . $posterLama)) {
+                unlink('img/' . $posterLama);
+            }
         }
 
         $slug = url_title($this->request->getVar('judul'), '-', true);
@@ -147,7 +212,7 @@ class KDrama extends BaseController
             'slug' => $slug,
             'sutradara' => $this->request->getVar('sutradara'),
             'penayangan' => $this->request->getVar('penayangan'),
-            'poster' => $this->request->getVar('poster'),
+            'poster' => $namaPoster
         ]);
 
         session()->setFlashdata('pesan', 'Data berhasil diubah.');

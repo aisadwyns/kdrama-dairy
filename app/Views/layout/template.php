@@ -31,6 +31,41 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
+    <script>
+        function previewImg() {
+            /*variable*/
+            //buat ngambil inputan posternya
+            const poster = document.querySelector('#poster');
+            //ngambil labelnya (tpi karena bootstrapku dan pa dika ga sama jdi aku hilngkan bagian ini)
+            // const posterLabel = document.querySelector('.custom-file-label');
+            //buat preview imagenya
+            const imgPreview = document.querySelector('.img-preview');
+
+            //untuk tulisan labelnya, buat ngeganti urlnya
+            // posterLabel.textContent = poster.files[0].name;
+
+            /*variable lagi*/
+            //ambil alamat penyimpanannya trs ambil nama filenya
+            const filePoster = new FileReader();
+            filePoster.readAsDataURL(poster.files[0]); //buat disismpen ke gambarnya sy akan tulis kode dibawahnya lgi
+
+            filePoster.onload = function(e) {
+                imgPreview.src = e.target.result;
+            }
+        }
+    </script>
 </body>
+
+<footer class="container-fluid text-light mt-5 py-4" style="background-color: #001f3f;">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="mb-3 mb-md-0">
+            <p class="mb-0">© <?= date('Y'); ?> Aisa's K-Drama Diary</p>
+            <small>Sharing honest reviews & favorite picks with fellow drama lovers.</small>
+        </div>
+        <div>
+            <a href="#" class="text-light text-decoration-none">Back to top</a>
+        </div>
+    </div>
+</footer>
 
 </html>

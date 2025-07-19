@@ -12,12 +12,13 @@
                 </div>
             <?php endif ?>
             <a href="/kdrama/create" class="btn btn-primary mb-2">Tambah Data K-Drama</a>
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Poster</th>
                         <th scope="col">Judul</th>
+                        <th scope="col">Star</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -28,6 +29,7 @@
                             <th scope="row"><?= $i++; ?></th>
                             <td><img src="/img/<?= $k['poster']; ?>" alt="" class="poster"></td>
                             <td><?= $k['judul']; ?></td>
+                            <td>-</td>
                             <td><a href="/kdrama/<?= $k['slug']; ?>" class="btn btn-primary">Detail</a></td>
                         </tr>
                     <?php endforeach; ?>
