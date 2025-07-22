@@ -10,6 +10,7 @@ $routes->get('/pages/home', 'Pages::index');
 $routes->get('/pages/about', 'Pages::about');
 $routes->get('/pages/contact', 'Pages::contact');
 $routes->get('/kdrama', 'KDrama::index');
+$routes->get('/aktor', 'Aktor::index');
 $routes->get('/kdrama/create', 'KDrama::create');
 $routes->get('/kdrama/edit/(:segment)', 'KDrama::edit/$1');
 $routes->post('/kdrama/save', 'KDrama::save');

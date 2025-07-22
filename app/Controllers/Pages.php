@@ -15,6 +15,7 @@ class Pages extends BaseController
 
     public function about()
     {
+        $faker = \Faker\Factory::create();
         $data = [
             'title' => 'About Me'
         ];
