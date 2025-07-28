@@ -2,14 +2,25 @@
 
 namespace App\Controllers;
 
+use App\Models\PagesModel;
+
 class Pages extends BaseController
 {
+    //butuh properti 
+    protected $pagesModel;
+    //supaya ketika lu nanti ga manggil trs modelnya, dan biar semua method bisa langsung manggil asi model
+    public function __construct()
+    {
+        //instansiasi class modelnya
+        $this->pagesModel = new PagesModel();
+    }
     public function index()
     {
         $data = [
-            'title' => 'Home | AISA'
-        ];
+            'title' => 'daftar Drama',
+            'kdrama' => $this->pagesModel->getKDrama()
 
+        ];
         return view('pages/home', $data);
     }
 
