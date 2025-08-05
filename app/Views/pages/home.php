@@ -28,7 +28,15 @@
                         <img src="/img/<?= $k['poster']; ?>" class="card-img-top" alt="<?= $k['judul']; ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $k['judul']; ?></h5>
-                            <p class="card-text">⭐⭐⭐⭐⭐<br> Drama yang menyentuh banget. Tentang mimpi, perjuangan, dan cinta yang nggak bisa bersama 😭.</p>
+                            <p class="card-text">
+                            <div class="star-rating">
+                                <?php
+                                $rating = (int)$k['rate'];
+                                for ($i = 1; $i <= 5; $i++): ?>
+                                    <i class="<?= $i <= $rating ? 'bi bi-star-fill text-warning' : 'bi bi-star text-muted'; ?>"></i>
+                                <?php endfor; ?>
+                                <span class="ms-2">(<?= $k['rate']; ?>)</span>
+                            </div><br><?= $k['deskripsi']; ?></p>
                         </div>
                         <div class="card-footer bg-white border-0">
                             <a href="#" class="btn btn-sm btn-outline-primary">Read Full Review</a>

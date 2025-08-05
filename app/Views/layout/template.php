@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
     <!-- My CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -20,6 +21,8 @@
     <?= $this->include('layout/navbar'); ?>
 
     <?= $this->renderSection('content'); ?>
+
+    <?= $this->include('layout/footer'); ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -55,17 +58,5 @@
         }
     </script>
 </body>
-
-<footer class="container-fluid text-light mt-5 py-4" style="background-color: #001f3f;">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <div class="mb-3 mb-md-0">
-            <p class="mb-0">© <?= date('Y'); ?> Aisa's K-Drama Diary</p>
-            <small>Sharing honest reviews & favorite picks with fellow drama lovers.</small>
-        </div>
-        <div>
-            <a href="#" class="text-light text-decoration-none">Back to top</a>
-        </div>
-    </div>
-</footer>
 
 </html>

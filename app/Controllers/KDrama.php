@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\KategoriModel;
 use App\Models\KDramaModel;
 
 use function PHPUnit\Framework\throwException;
@@ -54,11 +55,14 @@ class KDrama extends BaseController
 
     public function create()
     {
+        $kategoriModel = new KategoriModel();
+
         helper('form');
         session();
         $data = [
             'title' => 'Form Tambah Data K-Drama',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'kategori' => $kategoriModel->findAll()
 
         ];
 
@@ -114,6 +118,10 @@ class KDrama extends BaseController
             'slug' => $slug,
             'sutradara' => $this->request->getVar('sutradara'),
             'penayangan' => $this->request->getVar('penayangan'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'rate' => $this->request->getVar('rate'),
+            'kategori_id' => $this->request->getVar('kategori'),
+
             'poster' => $namaPoster,
         ]);
 

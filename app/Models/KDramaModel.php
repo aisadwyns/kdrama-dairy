@@ -6,10 +6,23 @@ use CodeIgniter\Model;
 
 class KDramaModel extends Model
 {
-    protected $table = 'kdrama';
-    protected $useTimestamps = false;
-    protected $allowedFields = ['judul', 'slug', 'sutradara', 'penayangan', 'poster'];
 
+    protected $table      = 'kdrama'; // HARUS 'kdramas' (plural)
+    protected $primaryKey = 'id';
+
+    protected $allowedFields = [
+        'judul',
+        'slug',
+        'sutradara',
+        'penayangan',
+        'tahun_tayang',
+        'deskripsi',
+        'rate',
+        'poster',
+        'kategori_id',
+    ];
+
+    protected $useTimestamps = true;
     public function getKDrama($slug = false)
     {
         if ($slug == false) {

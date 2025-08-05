@@ -20,6 +20,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="judul" class="col-sm-3 col-form-label">Kategori</label>
+                            <div class="col-sm-9">
+                                <select class="form-select <?= (validation_show_error('kategori')) ? 'is-invalid' : ''; ?>" name="kategori" id="kategori">
+                                    <option selected disabled>Pilih Kategori</option>
+                                    <?php foreach ($kategori as $kt) : ?>
+                                        <option value="<?= $kt['id']; ?>"><?= $kt['nama_kategori']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class="invalid-feedback">
+                                    <small><?= validation_show_error('kategori') ?></small>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="sutradara" class="col-sm-3 col-form-label">Sutradara</label>
@@ -42,11 +56,11 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="sinopsis" class="col-sm-3 col-form-label">Sinopsis</label>
+                            <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control" id="sinopsis" name="sinopsis" rows="3"><?= old('sinopsis'); ?></textarea>
+                                <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"><?= old('deskripsi'); ?></textarea>
                                 <div class="invalid-feedback">
-                                    <small><?= validation_show_error('sinopsis') ?></small>
+                                    <small><?= validation_show_error('deskripsi') ?></small>
                                 </div>
                             </div>
                         </div>
