@@ -17,3 +17,4 @@ $routes->post('/kdrama/save', 'KDrama::save');
 $routes->post('/kdrama/save/(:num)', 'Kdrama::update/$1');
 $routes->delete('kdrama/(:num)', 'KDrama::delete/$1');
 $routes->get('/kdrama/(:any)', 'KDrama::detail/$1');
+$routes->get('pages/(:segment)', 'Pages::detail/$1');

@@ -59,13 +59,13 @@ class Pages extends BaseController
     {
         $data = [
             'title'  => 'Detail KDrama',
-            'kdrama' => $this->pagesModel->getPages($slug) // pastikan sudah JOIN kategori (lihat Model di bawah)
+            'kdrama' => $this->pagesModel->getKDrama($slug) // <-- ganti getPages -> getKDrama
         ];
 
         if (empty($data['kdrama'])) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Judul drama ' . $slug . ' tidak ditemukan.');
         }
 
-        return view('kdrama/detail', $data);
+        return view('pages/review', $data);
     }
 }
