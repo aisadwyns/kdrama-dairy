@@ -39,7 +39,7 @@
                             </div><br><?= $k['deskripsi']; ?></p>
                         </div>
                         <div class="card-footer bg-white border-0">
-                            <a href="#" class="btn btn-sm btn-outline-primary">Read Full Review</a>
+                            <a href="/pages/<?= $k['slug']; ?>" class="btn btn-sm btn-outline-primary">Read Full Review</a>
                         </div>
                     </div>
                 </div>

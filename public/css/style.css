@@ -122,3 +122,26 @@
   padding: 0 12px;
   margin-bottom: 1.5rem;
 }
+.poster {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.badge-cat {
+  font-weight: 500;
+}
+
+.meta dt {
+  width: 130px;
+}
+
+.meta dd {
+  margin-left: 0;
+}
+
+.star-lg i {
+  font-size: 1.1rem;
+}
