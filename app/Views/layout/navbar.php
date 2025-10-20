@@ -36,9 +36,15 @@
                     <a class="nav-link" href="/aktor" tabindex="-1" aria-disabled="true">Aktor</a>
                 </li>
             </ul>
+
+
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-success me-4" type="submit">Search</button>
+            </form>
+            <form class="d-flex">
+                <button class="btn btn-outline-success me-2" type="submit">Masuk</button>
+                <button class="btn btn-outline-success" type="submit">Daftar</button>
             </form>
         </div>
 

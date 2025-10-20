@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>Contact Us</h2>
+            <h2>Korean Drama Enthusiast</h2>
             <p>
-                hubungi kami di nomor berikut ini
+                forum buat bahas k drama,
             </p>
             <?php foreach ($alamat as $a) : ?>
                 <ul>

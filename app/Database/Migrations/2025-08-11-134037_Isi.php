@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Kdrama extends Migration
+class Isi extends Migration
 {
     public function up()
     {

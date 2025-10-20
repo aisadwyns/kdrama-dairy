@@ -12,6 +12,12 @@ class PagesModel extends Model
 
     public function getKDrama($slug = false)
     {
+
+        $builder = $this->db->table('kdramas k')
+            ->select('k.*, kk.nama_kategori')
+            ->join('kategori_kdrama kk', 'kk.id = k.kategori_id', 'left')
+            ->orderBy('k.id', 'DESC');
+
         if ($slug == false) {
             return $this->findAll();
         }

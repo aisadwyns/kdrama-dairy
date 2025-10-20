@@ -54,4 +54,18 @@ class Pages extends BaseController
 
         return view('pages/contact', $data);
     }
+
+    public function detail($slug)
+    {
+        $data = [
+            'title'  => 'Detail KDrama',
+            'kdrama' => $this->pagesModel->getPages($slug) // pastikan sudah JOIN kategori (lihat Model di bawah)
+        ];
+
+        if (empty($data['kdrama'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Judul drama ' . $slug . ' tidak ditemukan.');
+        }
+
+        return view('kdrama/detail', $data);
+    }
 }
